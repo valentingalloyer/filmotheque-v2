@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="fr">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Liste des films</title>
+</head>
+<body>
+
+<h1>Liste des films</h1>
+
+<table>
+
+    <tr th:each="film:${listFilms}">
+        <td>
+            <a th:href="@{/get/{id}(id=${film.getId()})}">
+                <span th:text="${film.titre}"></span>
+            </a>
+        </td>
+        <td>
+            <span th:text="${film.synopsis}"></span>
+        </td>
+    </tr>
+</table>
+
+</body>
+</html>

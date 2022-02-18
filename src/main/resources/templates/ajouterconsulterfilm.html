@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Détails du film</title>
+</head>
+<body>
+
+<h1>Ajouter un film</h1>
+
+<form th:action="@{/add}" method="post" th:object="${filmForm}">
+    <div class="form-group">
+        <input type="text" class="form-control" id="titre" placeholder="Titre" th:field="${filmForm.titre}">
+    </div>
+    <div class="form-group">
+        <label for="duree">Durée du film</label>
+        <input type="number" class="form-control" id="duree" placeholder="Durée" th:field="${filmForm.duree}">
+    </div>
+    <div class="form-group">
+        <label for="annee">Année de sortie</label>
+        <input type="number" class="form-control" id="annee" placeholder="Année" th:field="${filmForm.annee}">
+    </div>
+    <div class="form-group">
+        <label for="synopsis">Synopsis</label>
+        <input type="text" class="form-control" id="synopsis" placeholder="Synopsis" th:field="${filmForm.synopsis}">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" id="realisateurnom" placeholder="Nom du réalisateur"
+               th:field="${filmForm.realisateur.nom}">
+        <input type="text" class="form-control" id="realisateurprenom" placeholder="Prénom du réalisateur"
+               th:field="${filmForm.realisateur.prenom}">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" id="acteurnom0" placeholder="Nom de l'acteur"
+               th:field="${filmForm.acteurs[0].nom}">
+        <input type="text" class="form-control" id="acteurprenom0" placeholder="Prénom de l'acteur"
+               th:field="${filmForm.acteurs[0].prenom}">
+    </div>
+    <div class="form-group">
+        <input type="text" class="form-control" id="acteurnom1" placeholder="Nom de l'acteur"
+               th:field="${filmForm.acteurs[1].nom}">
+        <input type="text" class="form-control" id="acteurprenom1" placeholder="Prénom de l'acteur"
+               th:field="${filmForm.acteurs[1].prenom}">
+    </div>
+    <button type="submit" class="btn btn-primary">Valider</button>
+</form>
+
+</body>
+</html>

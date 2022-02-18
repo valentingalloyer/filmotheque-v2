@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Connexion</title>
+</head>
+<body>
+
+<h1>CONNEXION</h1>
+
+<form th:action="@{/connexion}" method="post" th:object="${membreForm}">
+
+    <div class="form-group">
+        <input type="text" class="form-control" id="username" placeholder="Username" th:field="${membreForm.username}">
+    </div>
+
+    <div class="form-group">
+        <input type="password" class="form-control" id="password" placeholder="Password" th:field="${membreForm.password}">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Valider</button>
+
+</form>
+
+</body>
+</html>

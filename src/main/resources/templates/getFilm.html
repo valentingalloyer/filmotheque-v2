@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Détails du film</title>
+</head>
+<body>
+
+<h1>Détails du film <span th:text="${film.getTitre()}"></span></h1>
+
+<p>Réalisé par <span th:text="${film.getRealisateur().getNom()} + ' ' + ${film.getRealisateur().getPrenom()}"></span></p>
+<p>Sorti en <span th:text="${film.getAnnee()}"></span></p>
+<p>Durée : <span th:text="${film.getDuree()}"></span> minutes</p>
+<p>Genre : <span th:text="${film.getGenre().libelle}"></span></p>
+<p>Acteurs :</p>
+<ul th:each="acteur:${film.getActeurs()}">
+    <li>
+        <span th:text="${acteur.getNom()} + ' ' + ${acteur.prenom}"></span>
+    </li>
+</ul>
+
+
+
+</body>
+</html>
