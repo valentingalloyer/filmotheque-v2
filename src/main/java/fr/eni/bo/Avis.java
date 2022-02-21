@@ -8,6 +8,9 @@ public class Avis {
     private Film film;
     private Membre membre;
 
+    public Avis() {
+    }
+
     public Avis(int id, int note, String avis, Film film, Membre membre) {
         this.id = id;
         this.note = note;

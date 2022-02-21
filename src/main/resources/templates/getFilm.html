@@ -20,7 +20,14 @@
     </li>
 </ul>
 
+<p>AVIS :</p>
+<ul th:each="avis:${film.getListAvis()}">
+    <li>
+        Avis donné par <span th:text="${avis.membre} + ' : ' + ${avis.note} + '/5 - ' + ${avis.avis}"></span>
+    </li>
+</ul>
 
+<a th:href="@{/{id}/avis(id=${film.getId()})}">Noter le film</a>
 
 </body>
 </html>

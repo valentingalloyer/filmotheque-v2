@@ -30,7 +30,6 @@ public class FilmController {
 
     @GetMapping("/get/{id}")
     public String getFilm(@PathVariable("id") int id, Model model) {
-        System.out.println(id);
         model.addAttribute("film", filmService.getFilm(id));
         return "getFilm";
     }
@@ -38,6 +37,7 @@ public class FilmController {
     @GetMapping("/add")
     public String goAjouterFilm(Model model) {
         Film film = new Film();
+        film.setAnnee(2022);
         model.addAttribute("filmForm", film);
 
         return "ajouterconsulterfilm";
@@ -45,7 +45,6 @@ public class FilmController {
 
     @PostMapping("/add")
     public String addFilm(@ModelAttribute("filmForm") Film filmForm, Model model) throws Exception {
-        model.addAttribute("filmForm", filmForm);
         filmService.addFilm(filmForm);
         return "index";
     }
@@ -59,23 +58,20 @@ public class FilmController {
         System.out.println("Le film a été supprimé");
     }
 
-//    @GetMapping("note/${id}")
-    public void noterFilm() {
-        System.out.println("Quel id ?");
-        Scanner scanner = new Scanner(System.in);
-        int id = scanner.nextInt();
+    @GetMapping("/{id}/avis")
+    public String goAjouterAvisFilm(@PathVariable("id") int id, Model model) {
+        Film film = getFilmById(id);
+        Avis avis = new Avis();
+        avis.setNote(5);
+        model.addAttribute("film", film);
+        model.addAttribute("avis", avis);
+        return "ajouteravis";
+    }
 
-        System.out.println("Vous allez noter le film " + getFilmById(id).getTitre());
-
-        System.out.println("Quelle note ?");
-        int note = scanner.nextInt();
-        scanner.nextLine();
-
-        System.out.println("Dites m'en plus");
-        String libelle = scanner.nextLine();
-
-        Avis avis = new Avis(note, libelle, getFilmById(id));
-
-        this.filmService.noterFilm(id, avis);
+    @PostMapping("/{id}/avis")
+    public String noterFilm(@PathVariable("id") int id, @ModelAttribute("avisForm") Avis avis, Film filmForm, Model model) throws Exception {
+        model.addAttribute("avisForm", avis);
+        filmService.noterFilm(id, avis);
+        return "index";
     }
 }

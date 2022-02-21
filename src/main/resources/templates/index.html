@@ -7,10 +7,13 @@
 </head>
 <body>
 
-    <h1>BIENVENUE DANS VOTRE FILMOTHEQUE</h1>
+    <h1>BIENVENUE DANS VOTRE FILMOTHEQUE
+        <span th:if="${membreForm != null}" th:text="${membreForm.username}"></span>
+    </h1>
 
-    <p><a th:href="connexion">Se connecter</a></p>
-    <p><a th:href="deconnexion">Se déconnecter</a></p>
+    <p><a th:if="${membreForm == null}" th:href="connexion">Se connecter</a></p>
+    <p><a th:if="${membreForm != null}" th:href="deconnexion">Se déconnecter</a></p>
+
 
 
     <p><a th:href="list">Lister les film</a></p>

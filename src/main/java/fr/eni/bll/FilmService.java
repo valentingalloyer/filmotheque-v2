@@ -50,9 +50,12 @@ public class FilmService implements IFilmService {
     }
 
     @Override
-    public void noterFilm(int id, Avis avis) {
+    public void noterFilm(int id, Avis avis) throws Exception {
         if (connectionService.getMembreConnecte() != null) {
             getFilm(id).getListAvis().add(avis);
+            System.out.println("Avis ajouté");
+        } else {
+            throw new Exception("Pas d'utilisateur connecté");
         }
     }
 

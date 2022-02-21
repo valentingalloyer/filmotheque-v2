@@ -46,6 +46,6 @@ public interface IFilmService {
      * @param id id du film à noter
      * @param avis avis donné au film
      */
-    void noterFilm(int id, Avis avis);
+    void noterFilm(int id, Avis avis) throws Exception;
 
 }
